@@ -25,12 +25,12 @@ while(ord(currentPage) <= ord(lastPage)):
         subst.write( med + ",.N+subst\n")
         number = number + 1
     # Writing the number of medicines with the current letter (page) on the infos1 file
-    infos1.write("The number of medicines with the letter " + str(currentPage) + " is: " + str(number)+ "\n")
+    infos1.write("The number of medicines with the letter " + str(currentPage) + " is: " + str(number) + "\n")
     # Adding the number of the medicines to the counter to know the total number at the end
     counter = number + counter
     # Assign 0 to the number for the next iteration
     number = 0
     # Adding one to the ord of the current page then transform it to a character to work with ord on the condition of the while again
-    currentPage = chr(ord(currentPage)+1)
+    currentPage = chr(ord(currentPage) + 1)
 # Writing the total number of medicines on the infos1 file
 infos1.write("The total number of medicines is:" + str(counter))
