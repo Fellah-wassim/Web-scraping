@@ -16,10 +16,10 @@ while(ord(page) <= ord(fin_page)):
     soup = BeautifulSoup(src, 'lxml')
     match = soup.find('ul', class_='substances list_index has_children')
     match.text.strip()
-    for line in match.text.splitlines():
-        if not line.strip():
+    for medcine in match.text.splitlines():
+        if not medcine.strip():
             continue
-        srt1.write(line+",.N+subst\n")
+        srt1.write(medcine+",.N+subst\n")
         nbr = nbr+1
     srt2.write("le nombre des mediacaments avec la lettre " + str(page)+" est: "+ str(nbr)+"\n")
     i = nbr+i
