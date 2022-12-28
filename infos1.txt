@@ -1,0 +1,27 @@
+The number of medicines with the letter A is: 198
+The number of medicines with the letter B is: 81
+The number of medicines with the letter C is: 175
+The number of medicines with the letter D is: 112
+The number of medicines with the letter E is: 87
+The number of medicines with the letter F is: 80
+The number of medicines with the letter G is: 50
+The number of medicines with the letter H is: 31
+The number of medicines with the letter I is: 77
+The number of medicines with the letter J is: 1
+The number of medicines with the letter K is: 6
+The number of medicines with the letter L is: 71
+The number of medicines with the letter M is: 120
+The number of medicines with the letter N is: 65
+The number of medicines with the letter O is: 46
+The number of medicines with the letter P is: 151
+The number of medicines with the letter Q is: 8
+The number of medicines with the letter R is: 57
+The number of medicines with the letter S is: 97
+The number of medicines with the letter T is: 132
+The number of medicines with the letter U is: 11
+The number of medicines with the letter V is: 43
+The number of medicines with the letter W is: 1
+The number of medicines with the letter X is: 4
+The number of medicines with the letter Y is: 1
+The number of medicines with the letter Z is: 17
+The total number of medicines is: 1722
