@@ -14,7 +14,7 @@ number = 0
 
 # Using the ord function to browse all the alphabet on the interval from the current page to the last page
 while(ord(currentPage) <= ord(lastPage)):
-    src = urllib.request.urlopen('http://127.0.0.1:' + str(userPort) + '/vidal/vidal-Sommaires-Substances-' + currentPage + '.htm')
+    src = urllib.request.urlopen('http://127.0.0.1:' + str(userPort) + '/vidal/vidal-Sommaires-Substances-' + currentPage + '.html')
     soup = BeautifulSoup(src, 'lxml')
     # Using soup.find to return a list of ul tag with specific class
     founded = soup.find('ul', class_='substances list_index has_children')
