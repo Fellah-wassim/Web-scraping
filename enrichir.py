@@ -5,6 +5,18 @@ import sys
 if len(sys.argv) < 2:
 	print("You need to enter the corpus-medical.txt file")
 else:	
+	subst_corpus = open("subst_corpus.dic",'w',encoding="utf-16")
+	subst_corpus.write("\ufeff")
+  # Get lines of both files subst and corpus
+	subst = open("subst.dic",'r',encoding="utf-16")
+	substLines = subst.readlines()
+	subst.close()
+	corpusFile = open(sys.argv[1],'r',encoding="utf-8")
+	corpusLines = corpusFile.readlines()
+	corpusFile.close()
+
+	reg = "^([^A-Za-zéèêïç]| ){0,3}([A-Za-zéèêïç]+) (LP )?:? ?(\d+|\.|,)+ (g|mg|ml|mcg|UI|\d+?/j)"
+
   # Define order function
 	def order(INP1,INP2):
 		alphabetFR=["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -24,18 +36,6 @@ else:
 		else:
 			return True   
 
-	subst_corpus = open("subst_corpus.dic",'w',encoding="utf-16")
-	subst_corpus.write("\ufeff")
-  # Get lines of both files subst and corpus
-	subst = open("subst.dic",'r',encoding="utf-16")
-	substLines = subst.readlines()
-	subst.close()
-	corpusFile = open(sys.argv[1],'r',encoding="utf-8")
-	corpusLines = corpusFile.readlines()
-	corpusFile.close()
-
-	regex = "^([^A-Za-zéèêïç]| ){0,3}([A-Za-zéèêïç]+) (LP )?:? ?(\d+|\.|,)+ (g|mg|ml|mcg|UI|\d+?/j)"
-
 	lineNumber = 1 
   # CorpusListWithoutDoubles is a list of enrichment medical entities without duplicates
 	CorpusListWithoutDoubles=[]
@@ -45,7 +45,7 @@ else:
     # Make sure to encode the line on utf-16 with BOM
 		L = L.encode("utf-16-le").decode("utf-16-le")
     # Searching for the medicine on the line and ignoring the case-insensitive 
-		search = re.findall(regex, L, re.IGNORECASE)
+		search = re.findall(reg, L, re.IGNORECASE)
 		if len(search) > 0: 
       # To index the medicine we use two square bracket because we have a list inside a list
 			line = search[0][1].lower()+",.N+subst\n"
