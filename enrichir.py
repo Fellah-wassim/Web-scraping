@@ -14,9 +14,7 @@ else:
 	corpusFile = open(sys.argv[1],'r',encoding="utf-8")
 	corpusLines = corpusFile.readlines()
 	corpusFile.close()
-
 	reg = "^([^A-Za-zéèêïç]| ){0,3}([A-Za-zéèêïç]+) (LP )?:? ?(\d+|\.|,)+ (g|mg|ml|mcg|UI|\d+?/j)"
-
   # Define order function
 	def order(INP1,INP2):
 		alphabetFR=["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -66,7 +64,6 @@ else:
 						enrichListWithoutDoubles.append(line)
 			if(not(line in CorpusListWithoutDoubles)):
 				CorpusListWithoutDoubles.append(line)
-				
 			print(str(lineNumber)+" "+ search[0][1].lower())
 			lineNumber = lineNumber + 1
 	subst_corpus.close()
