@@ -86,7 +86,7 @@ else:
 				infos2.write(listElement)
 				counter = counter + 1
 		infos2.write("Total with letter "+ letter + " is: " + str(counter)+ "\n")
-		infos2.write("-------------------------------------\n")
+		infos2.write("\n++++++++++++++++++++++++++++++++++++++++\n\n")
 		total = total + counter
 	infos2.write("The total number of medicines from the corpus is: " + str(total) + "\n")		
 	infos2.close()
@@ -102,7 +102,7 @@ else:
 				infos3.write(listElement)
 				counter = counter + 1
 		infos3.write("Total with letter " + letter + " is: " + str(counter) + "\n")
-		infos3.write("-------------------------------------\n")
+		infos3.write("\n++++++++++++++++++++++++++++++++++++++++\n\n")
 		total = total + counter
 	infos3.write("The total number of medicines stored for enrichment is: " + str(total) + "\n")		
 	infos3.close()
