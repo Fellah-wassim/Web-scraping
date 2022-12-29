@@ -88,21 +88,23 @@ else:
 			if(listElement[0] == letter):
 				infos2.write(listElement)
 				counter = counter + 1
-		infos2.write("Total with letter "+ letter + ": " + str(counter)+ "\n")
+		infos2.write("Total with letter "+ letter + " is: " + str(counter)+ "\n")
 		infos2.write("-------------------------------------\n")
 		total = total + counter
 	infos2.write("The total number of medicines from the corpus is: " + str(total) + "\n")		
 	infos2.close()
-	
+
+	# Create the infos3.txt file
 	infos3 = open("infos3.txt",'w',encoding="utf-16")
 	total = 0
-	for letter in ["a","b","c","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] :
+  # We do the same as the functionality of infos2.txt 
+	for letter in ["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] :
 		counter = 0
 		for listElement in enrichListWithoutDoubles:
 			if(listElement[0] == letter):
-				infos2.write(listElement)
+				infos3.write(listElement)
 				counter = counter + 1
-		infos3.write("Total with letter " + letter + ": " + str(counter) + "\n")
+		infos3.write("Total with letter " + letter + " is: " + str(counter) + "\n")
 		infos3.write("-------------------------------------\n")
 		total = total + counter
 	infos3.write("The total number of medicines stored for enrichment is: " + str(total) + "\n")		
