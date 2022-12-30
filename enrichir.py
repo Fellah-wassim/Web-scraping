@@ -15,6 +15,7 @@ else:
 	corpusLines = corpusFile.readlines()
 	corpusFile.close()
 	reg = "^([^A-Za-zéèêïç]| ){0,3}([A-Za-zéèêïç]+) (LP )?:? ?(\d+|\.|,)+ (g|mg|ml|mcg|UI|\d+?/j)"
+
   # Define order function
 	def order(INP1,INP2):
 		alphabetFR=["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -34,7 +35,6 @@ else:
 		else:
 			return True   
 
-	lineNumber = 1 
   # CorpusListWithoutDoubles is a list of enrichment medical entities without duplicates
 	CorpusListWithoutDoubles=[]
   # enrichListWithoutDoubles is a list of enrichment medical entities without duplicates
@@ -60,12 +60,10 @@ else:
         # If the position is inside the substLines then insert the line on that position
 				if position < len(substLines):
 					substLines.insert(position,line)
-					if(not(line in enrichListWithoutDoubles)):
-						enrichListWithoutDoubles.append(line)
+				if(not(line in enrichListWithoutDoubles)):
+					enrichListWithoutDoubles.append(line)
 			if(not(line in CorpusListWithoutDoubles)):
 				CorpusListWithoutDoubles.append(line)
-			print(str(lineNumber)+" "+ search[0][1].lower())
-			lineNumber = lineNumber + 1
 	subst_corpus.close()
 	
 	subst=open("subst.dic",'w',encoding="utf-16-le")
@@ -74,37 +72,23 @@ else:
 	for L in substLines:
 		subst.write(L)
 	subst.close()
-	
-  # Create the infos2.txt file
-	infos2 = open("infos2.txt",'w',encoding="utf-16")
-	total = 0
-  # For every single letter we search for the medicine that starts with this letter and write it to the info2 file and count the total number
-	for letter in ["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] :
-		counter = 0
-		for listElement in CorpusListWithoutDoubles:
-			if(listElement[0] == letter):
-				infos2.write(listElement)
-				counter = counter + 1
-		infos2.write("Total with letter "+ letter + " is: " + str(counter)+ "\n")
-		infos2.write("\n++++++++++++++++++++++++++++++++++++++++\n\n")
-		total = total + counter
-	infos2.write("The total number of medicines from the corpus is: " + str(total) + "\n")		
-	infos2.close()
 
-	# Create the infos3.txt file
-	infos3 = open("infos3.txt",'w',encoding="utf-16")
-	total = 0
-  # We do the same as the functionality of infos2.txt 
-	for letter in ["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] :
-		counter = 0
-		for listElement in enrichListWithoutDoubles:
-			if(listElement[0] == letter):
-				infos3.write(listElement)
-				counter = counter + 1
-		infos3.write("Total with letter " + letter + " is: " + str(counter) + "\n")
-		infos3.write("\n++++++++++++++++++++++++++++++++++++++++\n\n")
-		total = total + counter
-	infos3.write("The total number of medicines stored for enrichment is: " + str(total) + "\n")		
-	infos3.close()
-		
-
+	def fileWriter(list,file,mode):
+		# Create the file
+		infos = open(file,'w',encoding="utf-16")
+		total = 0
+		# For every single letter we search for the medicine that starts with this letter and write it to the info2 file and count the total number
+		for letter in ["a","b","c","ç","d","e","é","è","ê","f","g","h","i","ï","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] :
+			counter = 0
+			for listElement in list:
+				if(listElement[0] == letter):
+					infos.write(listElement)
+					counter = counter + 1
+			infos.write("Total with letter " + letter + " is: " + str(counter) + "\n")
+			infos.write("\n++++++++++++++++++++++++++++++++++++++++\n\n")
+			total = total + counter
+		infos.write("The total number of medicines stored for "+ mode +" is: " + str(total) + "\n")		
+		infos.close()
+	# We call the fileWriter function twice to create infos files
+	fileWriter(CorpusListWithoutDoubles,"infos2.txt","corpus");
+	fileWriter(enrichListWithoutDoubles,"infos3.txt","enrichment");
