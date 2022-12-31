@@ -2,9 +2,9 @@ import sys
 from bs4 import BeautifulSoup
 import urllib.request
 
+infos1 = open("infos1.txt",'w')
 subst = open("subst.dic",'w',encoding='utf-16-le')
 subst.write('\ufeff')
-infos1 = open("infos1.txt",'w')
 intervalCollector = sys.argv[1] 
 currentPage = intervalCollector[0] 
 lastPage = intervalCollector[2]
@@ -14,8 +14,8 @@ number = 0
 
 # Using the ord function to browse all the alphabet on the interval from the current page to the last page
 while(ord(currentPage) <= ord(lastPage)):
-    src = urllib.request.urlopen('http://127.0.0.1:' + str(userPort) + '/vidal/vidal-Sommaires-Substances-' + currentPage + '.html')
-    soup = BeautifulSoup(src, 'html.parser')
+    source = urllib.request.urlopen('http://127.0.0.1:' + str(userPort) + '/vidal/vidal-Sommaires-Substances-' + currentPage + '.html')
+    soup = BeautifulSoup(source, 'html.parser')
     # Using soup.find to return a list of ul tag with specific class
     founded = soup.find('ul', class_='substances list_index has_children')
     founded.text.strip()
