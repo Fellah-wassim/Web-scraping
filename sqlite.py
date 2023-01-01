@@ -2,6 +2,7 @@ import sys
 import re
 import sqlite3
 
+# We need to check if the user gives the concord.html file
 if len(sys.argv) < 2:
   print("You need to enter the concord.html file")
 else:
