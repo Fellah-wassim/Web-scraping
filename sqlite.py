@@ -12,7 +12,7 @@ else:
   # We need to make the connection for executing SQL queries
 	obj = dataBase.cursor()
   # Creating the table of extraction with the id and posologie
-	obj.execute("CREATE TABLE IF NOT EXIST EXTRACTION (ID INT PRIMARY KEY, POSOLOGIE TEXT)")
+	obj.execute("CREATE TABLE EXTRACTION (ID INT PRIMARY KEY, POSOLOGIE TEXT)")
   # Insert the searched data to the table 
 	counter = 1    
 	for element in search:
